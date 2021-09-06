@@ -16,14 +16,19 @@ export const initialState = {
 };
 
 /* eslint-disable default-case, no-param-reassign */
-const homeReducer = (state = initialState, action) =>
-  produce(state, draft => {
-    switch (action.type) {
-      case CHANGE_USERNAME:
-        // Delete prefixed '@' from the github username
-        draft.username = action.username.replace(/@/gi, '');
-        break;
-    }
-  });
+const homeReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case 'set':
+      console.log('api', action.data);
+      // state.api = action.data;
+
+      return {
+        ...state,
+        api: [...action.data],
+      };
+    default:
+      return state;
+  }
+};
 
 export default homeReducer;

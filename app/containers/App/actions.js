@@ -58,17 +58,11 @@ export function repoLoadingError(error) {
   };
 }
 
-export const getUser=(data)=>{
-  return {
-   type:'get',
-   data
-  }
-}
+export const getUser = () => ({
+  type: 'get',
+});
 
-export const setUser=(details)=>{
-  return {
-    type: 'set',
-    details
-  }
-}
-
+export const setUser = data => ({
+  type: 'set',
+  data,
+});
