@@ -7,16 +7,16 @@
  *
  */
 
-import produce from 'immer';
-import { CHANGE_USERNAME } from './constants';
+//import produce from 'immer';
+//import { CHANGE_USERNAME } from './constants';
 
 // The initial state of the App
 export const initialState = {
-  username: '',
+  api: [],
 };
 
 /* eslint-disable default-case, no-param-reassign */
-const homeReducer = (state = initialState, action) => {
+const home = (state = initialState, action) => {
   switch (action.type) {
     case 'set':
       console.log('api', action.data);
@@ -26,9 +26,42 @@ const homeReducer = (state = initialState, action) => {
         ...state,
         api: [...action.data],
       };
+
+      case "updateDetails":
+      console.log("initialState", state);
+      console.log("ratingReducer", action.data);
+      let findIndex = state.api.findIndex(
+        (item) => item.id === action.data.id
+      );
+      // console.log(findIndex);
+      // let findIndexRate = state.details.findIndex((item) => item.rating);
+      // console.log("RatingIndex", findIndexRate);
+      //   state.details[findIndex] = {...state.details[findIndex], ...actions.data}
+      //let newDetails=[...state.details, state.details[findIndex].price=actions.data.price ]
+      //let updateRatings =[...state.details,state.details[findIndexRate].rating=actions.data.rate]
+      //console.log([updateRatings],'updated')
+        let update = state.api.map(el=> {
+          return el.id ===  action.data.id ? {...el, ...action.data} : el
+        })
+      console.log("details new", update)
+      return {
+        ...state,
+        api : update
+        // details:
+        //   actions.data.id === undefined
+        //     ? [
+        //         ...state.details,
+        //         (state.details[findIndexRate].rating = actions.data.rate),
+        //       ]
+        //     : [
+        //         ...state.details,
+        //         (state.details[findIndex].price = actions.data.price),
+        //       ],
+      };
+
     default:
       return state;
   }
 };
 
-export default homeReducer;
+export default home;

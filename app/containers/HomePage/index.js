@@ -6,17 +6,12 @@
 
 import React, { memo, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector, connect } from 'react-redux';
 import { compose } from 'redux';
 import { createStructuredSelector } from 'reselect';
 
 import { useInjectReducer } from 'utils/injectReducer';
 import { useInjectSaga } from 'utils/injectSaga';
-// import {
-//   makeSelectRepos,
-//   makeSelectLoading,
-//   makeSelectError,
-// } from 'containers/App/selectors';
 // import H2 from 'components/H2';
 // import ReposList from 'components/ReposList';
 
@@ -41,8 +36,11 @@ export function HomePage() {
   useInjectSaga({ key, saga });
   const dispatch = useDispatch();
 
-  useEffect(() => dispatch(getUser()), []);
-
+  useEffect( () => { 
+    dispatch(getUser()) 
+  }, []);
+  const state1 = useSelector(state => state.home);
+  console.log('state1',  state1);
   return (
     <div>
       <Helmet>
@@ -72,10 +70,33 @@ export function HomePage() {
           <ReposList {...reposListProps} />
         </Section>
          */}
-        <Item />
+        
+       
+           
+        {state1 &&
+          state1.api.map((i) => (
+            <div >
+              <Item
+                image={i.image}
+                price={i.price}
+                year={i.year}
+                id={i.id}
+                rating={i.rating}
+              />
+            </div>
+          ))}
+            
+          
       </div>
     </div>
   );
 }
 
-export default HomePage;
+const mapStateToProps = createStructuredSelector({});
+
+const withConnect = connect(mapStateToProps);
+
+export default compose(
+  withConnect,
+  memo,
+)(HomePage);

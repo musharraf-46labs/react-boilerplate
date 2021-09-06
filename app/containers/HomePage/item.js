@@ -5,6 +5,7 @@ import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
+//import { FaStar } from "react-icons/fa";
 
 import Typography from '@material-ui/core/Typography';
 import CardContent from '@material-ui/core/CardContent';
@@ -48,13 +49,13 @@ const colors = {
 };
 
 function Item(props) {
-  // const ratings = Array(5).fill(0);
-  // const [currentRating, setRating] = useState(0);
-  // const [currentHoverValue, setHoverValue] = useState(undefined);
-  // const [rats, setRats] = useState(props.rating);
-  // console.log(rats)
-  {
-    /**  const handleRats = (value) => {
+ /* const ratings = Array(5).fill(0);
+  const [currentRating, setRating] = useState(0);
+  const [currentHoverValue, setHoverValue] = useState(undefined);
+  const [rats, setRats] = useState(props.rating);
+   console.log(rats)
+  
+  const handleRats = (value) => {
     setRats(value);
   };
   // console.log(rats)
@@ -68,11 +69,10 @@ function Item(props) {
   const handleMouseLeave = () => {
     setHoverValue(undefined);
   }; */
-  }
+  
   const classes = useStyles();
   // const dispatch = useDispatch();
-  {
-    /** const [price, setPrice] = useState();
+  /* const [price, setPrice] = useState();
   const dispatch = useDispatch();
   const dispatchTwo = useDispatch();
   //  const details=useSelector((state)=>state.productDetails.details);
@@ -87,14 +87,14 @@ function Item(props) {
   //const add=useDispatch()
   var a = parseInt(price);
   //console.log('number',a) */
-  }
+  
 
   return (
     <Card className={classes.root}>
       <CardActionArea>
         <CardMedia
           className={classes.media}
-          image="" // {props.image}
+          image={props.image}
           title="Contemplative Reptile"
         />
         <CardContent>
@@ -103,7 +103,7 @@ function Item(props) {
           </Typography>
 
           <div>
-            {/** {props.rating >= 1
+             {/*props.rating >= 1
               ? ratings.map((_, index) => {
                   console.log("index", index);
                   return (
@@ -135,8 +135,8 @@ function Item(props) {
                       onMouseLeave={handleMouseLeave}
                     />
                   );
-                })}
-            */}
+                })*/}
+            
           </div>
 
           <Typography

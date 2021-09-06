@@ -12,10 +12,10 @@
 // import moduleName from './actions';
 // The initial state of the App
 export const initialState = {
-  api: [],
+ 
 };
 
 /* eslint-disable default-case, no-param-reassign */
-const appReducer = (state = initialState) => state;
-
+const appReducer = (state = initialState) => {;
+return 'this'}
 export default appReducer;

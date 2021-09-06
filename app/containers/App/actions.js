@@ -58,6 +58,7 @@ export function repoLoadingError(error) {
   };
 }
 
+
 export const getUser = () => ({
   type: 'get',
 });
@@ -66,3 +67,16 @@ export const setUser = data => ({
   type: 'set',
   data,
 });
+export const updateUser=(data)=>{
+  return {
+      type:'update',
+          data:data
+  }
+}
+
+export const updateUserDetails=(data)=>{
+  return {
+      type:'updateDetails',
+          data:data
+  }
+}
