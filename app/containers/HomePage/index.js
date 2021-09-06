@@ -24,7 +24,7 @@ import { useInjectSaga } from 'utils/injectSaga';
 // import { loadRepos } from '../App/actions';
 // import { changeUsername } from './actions';
 // import { makeSelectUsername } from './selectors';
-import reducer from './reducer';
+import reducer, { initialState } from './reducer';
 import saga from './saga';
 import Item from './item';
 import { getUser } from '../App/actions';
@@ -36,11 +36,11 @@ export function HomePage() {
   useInjectSaga({ key, saga });
   const dispatch = useDispatch();
 
-  useEffect( () => { 
-    dispatch(getUser()) 
+  useEffect(() => {
+    dispatch(getUser());
   }, []);
-  const state1 = useSelector(state => state.home);
-  console.log('state1',  state1);
+  const state1 = useSelector(state => state.home || initialState);
+  console.log('state1', state1);
   return (
     <div>
       <Helmet>
@@ -70,12 +70,10 @@ export function HomePage() {
           <ReposList {...reposListProps} />
         </Section>
          */}
-        
-       
-           
+
         {state1 &&
-          state1.api.map((i) => (
-            <div >
+          state1.api.map(i => (
+            <div>
               <Item
                 image={i.image}
                 price={i.price}
@@ -85,8 +83,6 @@ export function HomePage() {
               />
             </div>
           ))}
-            
-          
       </div>
     </div>
   );
