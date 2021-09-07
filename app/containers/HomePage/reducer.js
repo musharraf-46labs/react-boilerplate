@@ -56,6 +56,18 @@ const home = (state = initialState, action) => {
         //         (state.details[findIndex].price = actions.data.price),
         //       ],
       };
+    case 'deleteDetails':
+      // console.log(state)
+      //  console.log('check', actions.data)
+      var index = state.api.findIndex(i => i.id === action.data.id);
+      // console.log(index)
+      var final = state.api.splice(index, 1);
+      // console.log(final)
+      // console.log(state,'state')
+      var newState = state.api;
+      // console.log('newSatet',newState)
+
+      return { api: [...state.api] };
 
     default:
       return state;

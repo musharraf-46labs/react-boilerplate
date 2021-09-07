@@ -43,13 +43,6 @@ export function HomePage() {
   console.log('state1', state1);
   return (
     <div>
-      <Helmet>
-        <title>Home Page</title>
-        <meta
-          name="description"
-          content="A React.js Boilerplate application homepage"
-        />
-      </Helmet>
       <div>
         {/**
         <Section>

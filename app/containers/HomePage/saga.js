@@ -4,14 +4,19 @@
 
 import { call, put, select, takeLatest, delay } from 'redux-saga/effects';
 import { LOAD_REPOS } from 'containers/App/constants';
-import { reposLoaded, repoLoadingError, setUser,updateUserDetails } from 'containers/App/actions';
+import {
+  reposLoaded,
+  repoLoadingError,
+  setUser,
+  updateUserDetails,
+  deleteDetails,
+} from 'containers/App/actions';
 
 import request from 'utils/request';
 
 /**
  * Github repos request/response handler
  */
-
 
 export function* handleGetUser() {
   // const [data]= action
@@ -118,7 +123,18 @@ export function* handleGetUser() {
   }
 }
 
-
+export function* updateInfo(action) {
+  // console.log('rateSaga', action.data)
+  try {
+    yield put(updateUserDetails(action.data));
+  } catch (error) {}
+}
+export function* deleteInfo(action) {
+  // console.log('action', action.data)
+  try {
+    yield put(deleteDetails(action.data));
+  } catch (error) {}
+}
 
 /**
  * Root saga manages watcher lifecycle
@@ -128,7 +144,8 @@ export default function* githubData() {
   // By using `takeLatest` only the result of the latest API call is applied.
   // It returns task descriptor (just like fork) so we can continue execution
   // It will be cancelled automatically on component unmount
- 
-  yield takeLatest('get', handleGetUser)
- /*yield takeLatest('update', updateInfo);*/
+
+  yield takeLatest('get', handleGetUser);
+  yield takeLatest('update', updateInfo);
+  yield takeLatest('delete', deleteInfo);
 }

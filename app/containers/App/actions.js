@@ -75,3 +75,27 @@ export const updateUserDetails = data => ({
   type: 'updateDetails',
   data,
 });
+
+export const deleteDispatch = data => ({
+  type: 'delete',
+  data,
+});
+
+export const deleteDetails = data => ({
+  type: 'deleteDetails',
+  data,
+});
+
+export const addToCart = data =>
+  // console.warn('actions',data)
+  ({
+    type: 'addToCart',
+    data,
+  });
+
+export const removeFromCart = data =>
+  // console.warn('actions',data)
+  ({
+    type: 'removeFromCart',
+    data,
+  });

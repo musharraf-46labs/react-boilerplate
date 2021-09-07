@@ -1,20 +1,6 @@
-/*
- * AppReducer
- *
- * The reducer takes care of our data. Using actions, we can
- * update our application state. To add a new action,
- * add it to the switch statement in the reducer function
- *
- */
+const initialstate = { cart: [] };
 
-// import produce from 'immer';
-// import { LOAD_REPOS_SUCCESS, LOAD_REPOS, LOAD_REPOS_ERROR } from './constants';
-// import moduleName from './actions';
-// The initial state of the App
-export const initialState = {};
-
-/* eslint-disable default-case, no-param-reassign */
-const appReducer = (state = [], actions) => {
+export const checkoutreducer = (state = [], actions) => {
   switch (actions.type) {
     case 'addToCart':
       // console.warn('reducer',actions)
@@ -36,4 +22,3 @@ const appReducer = (state = [], actions) => {
       return state;
   }
 };
-export default appReducer;
